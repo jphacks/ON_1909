@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <head>
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script src="https://unpkg.com/obniz/obniz.js"></script>
+            <script src="https://obniz.io/users/2245/repo/DPS310.js"></script>
+        </head>
+    </head>
+    <body>
+        <script>
+            
+            var host = 'wss://obniz.io'
+            var obniz = new Obniz("OBNIZ_ID_HERE");
+            
+            obniz.onconnect = async function () {
+                Obniz.PartsRegistrate(DPS310);
+                obniz.setVccGnd(11, 9, '5v');
+                var sensor = obniz.wired("DPS310", { sda:0, scl:1, gnd:2 });
+
+                await sensor.init();
+                let firstData = await sensor.measurePressureOnce();
+                while (1) {
+                    let data = await sensor.measurePressureOnce();
+                    console.log(data);
+                    if (Math.abs(firstData - data) > 5){
+                      connect();
+                    }
+                    await obniz.wait(1000);
+                }
+            }
+
+            function connect() {
+                var socket = new WebSocket(host + '/obniz/OBNIZ_ID_HERE/ws/1');
+                socket.onmessage = function (event) {
+                    console.log("move");
+                }
+            }
+
+    </script>
+  </body>
+</html>
