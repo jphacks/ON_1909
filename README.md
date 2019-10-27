@@ -1,6 +1,6 @@
 # イハセンス
 
-[![Product Name](image.png)](https://www.youtube.com/watch?v=G5rULR53uMk)
+[![Product Name](image.png)](https://youtu.be/shmpZjw6lKs)
 
 ## 製品概要
 ### エンタメ × Tech
