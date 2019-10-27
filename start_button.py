@@ -9,11 +9,11 @@ def btn_click():
 
 # GUI設計プログラム， 関数定義しないこと
 root = tkinter.Tk()
-root.title(u"Software Title")
+root.title(u"指パッチン スクリーンショット")
 root.geometry("400x300")
 
 #ラベルを追加
-label = tkinter.Label(root, text="実行ボタンを押してください！")
+label = tkinter.Label(root, text="startボタンを押してください！")
 #表示
 label.grid()
 
