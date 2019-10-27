@@ -1,0 +1,8 @@
+sounds
+tmp
+__pycache__/
+my_modules/__pycache__/
+misdetection_log/
+.env
+image/
+*.txt

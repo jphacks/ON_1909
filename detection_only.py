@@ -6,6 +6,7 @@
 以下で実行
 python detection_only.py (実行する秒数)
 """
+
 from datetime import datetime
 import pyaudio
 import sys
@@ -15,6 +16,7 @@ import os
 import pyautogui
 import argparse
 import requests
+from screen_shot import Screen_shot
 from dotenv import load_dotenv
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 load_dotenv()
@@ -70,24 +72,6 @@ def set_pyaudio():
     )
 
     return pa, stream
-
-class Screen_shot:
-  def __init__(self):
-    self.count = 0
-    self.path = "./image"
-        
-  def main(self):
-    if not os.path.exists(self.path):
-      os.makedirs(self.path)
-    s = pyautogui.screenshot()
-    s.save('{0}/screenshot{1}.png'.format(self.path,self.count))
-    line_notify_api = 'https://notify-api.line.me/api/notify'
-    line_notify_token = os.environ["LINE_NOTIFY_TOKEN"]
-    headers = {'Authorization': 'Bearer ' + line_notify_token}
-    payload = {'message': "おはあやさ"}
-    files = {"imageFile": open('{0}/screenshot{1}.png'.format(self.path,self.count), "rb")}
-    requests.post(line_notify_api, data=payload, headers=headers, files=files)
-    self.count += 1
 
 def main():
     p, x, sess = set_tensorflow()
