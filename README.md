@@ -1,4 +1,4 @@
-# ぱっちんシャッター
+# イハセンス
 
 [![Product Name](image.png)](https://www.youtube.com/watch?v=G5rULR53uMk)
 
@@ -66,3 +66,24 @@
 * (かめ)
 * (いは)
 * (たくと)
+
+### 取扱説明書
+pythonのversionは3.6系統
+
+**指パッチン関係モジュール**
+
+```brew install portaudio
+pip install pyaudio
+sudo pip install numpy matplotlib tensorflow wave
+```
+
+**LINEの鍵を管理するモジュール**
+
+```pip install python-dotenv```
+
+**スクショ実行のためのモジュール**
+```
+sudo apt install python-xlib scrot
+pip install pyautogui
+```
+
