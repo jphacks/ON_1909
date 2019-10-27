@@ -27,15 +27,6 @@ import learning
 import const
 
 """
-定数
-"""
-# 実行時に引数に時間を指定していたらその時間分実行し、指定していなかったらデフォルトで100秒
-if len(sys.argv) == 2:
-    RECORD_SECONDS = int(sys.argv[1]) 
-else:
-    RECORD_SECONDS = 100
-
-"""
 tensorflowに関する処理
 """
 def set_tensorflow():
@@ -73,7 +64,7 @@ def set_pyaudio():
 
     return pa, stream
 
-def main():
+def measure(RECORD_SECONDS):
     p, x, sess = set_tensorflow()
     pa, stream = set_pyaudio()
     sc_shot = Screen_shot()
@@ -132,5 +123,11 @@ def main():
     pa.terminate()
     print('指パッチン検出を終了します。')
 
-if __name__ == "__main__":
-    main()
+def receiver(value):
+    # 実行時に引数に時間を指定していたらその時間分実行し、指定していなかったらデフォルトで100秒
+    if not value:
+        RECORD_SECONDS = int(100)
+    else:
+        RECORD_SECONDS = int(value)
+    print(RECORD_SECONDS)
+    measure(RECORD_SECONDS)
